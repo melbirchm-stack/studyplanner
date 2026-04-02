@@ -3,11 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
     <title>Mel Planner</title>
 </head>
 <body>
-    <h1>Welcome to Mel Planner</h1>
-    <p>Your study planning tool!</p>
+    <header>
+        <h1>Mel Planner</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Schedule</a></li>
+                <li><a href="#">LAQ Guide</a></li>
+                <li><a href="#">Notes</a></li>
+                <li><a href="#">Videos</a></li>
+                <li><a href="#">Strategy Cards</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="schedule">
+            <h2>Your Schedule</h2>
+            <div id="weeks">
+                <!-- Weeks structure will be inserted here -->
+            </div>
+        </section>
+        <section id="laq-guide">
+            <h2>LAQ Guide</h2>
+            <div id="systems-and-cascades">
+                <!-- Systems and Cascades content will be inserted here -->
+            </div>
+        </section>
+        <section id="notes-sheet">
+            <h2>Notes Sheet Builder</h2>
+            <div id="notes-content">
+                <!-- Notes content will be inserted here -->
+            </div>
+        </section>
+        <section id="videos">
+            <h2>Videos Section</h2>
+            <div id="videos-content">
+                <!-- Videos content will be inserted here -->
+            </div>
+        </section>
+        <section id="strategy-cards">
+            <h2>Strategy Cards</h2>
+            <div id="strategy-content">
+                <!-- Strategy Cards content will be inserted here -->
+            </div>
+        </section>
+    </main>
+    <script src="scripts.js"></script>
 </body>
 </html>
+
+<script>
+// JavaScript functionality for checkboxes and local storage
+function saveCheckboxState() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach((checkbox) => {
+        localStorage.setItem(checkbox.id, checkbox.checked);
+    });
+}
+
+function loadCheckboxState() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach((checkbox) => {
+        const savedState = localStorage.getItem(checkbox.id);
+        checkbox.checked = (savedState === 'true');
+    });
+}
+
+document.addEventListener('DOMContentLoaded', loadCheckboxState);
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', saveCheckboxState);
+});
+</script>
